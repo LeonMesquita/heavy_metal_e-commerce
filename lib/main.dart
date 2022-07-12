@@ -1,3 +1,4 @@
+import 'package:app_loja_virtual/src/base/base_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'src/auth/signin_screen.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
       ),
       themeMode: ThemeMode.dark,
-      home: const SignInScreen(),
+      home: SignInScreen(),
     );
   }
 }

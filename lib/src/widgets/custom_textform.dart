@@ -1,5 +1,6 @@
 import 'package:app_loja_virtual/src/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomTextform extends StatefulWidget {
   final TextInputType? inputType;
@@ -9,6 +10,7 @@ class CustomTextform extends StatefulWidget {
   final IconData? sufixIcon;
   final bool isSecret;
   final Function()? onpress;
+  final List<TextInputFormatter>? inputFormaters;
 
   CustomTextform({
     Key? key,
@@ -19,6 +21,7 @@ class CustomTextform extends StatefulWidget {
     this.sufixIcon,
     this.onpress,
     this.isSecret = false,
+    this.inputFormaters,
   });
 
   @override
@@ -38,6 +41,7 @@ class _CustomTextformState extends State<CustomTextform> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: TextFormField(
+        inputFormatters: widget.inputFormaters,
         obscureText: isObscure,
         keyboardType: widget.inputType ?? TextInputType.text,
         decoration: InputDecoration(

@@ -1,3 +1,4 @@
+import 'package:app_loja_virtual/src/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -14,10 +15,8 @@ class LinkText extends StatelessWidget {
       onPressed: onpress,
       child: Text(
         text,
-        style: TextStyle(
-            color: Colors.green.shade400,
-            fontSize: 15,
-            fontWeight: FontWeight.w700),
+        style: const TextStyle(
+            color: kCyanColor, fontSize: 15, fontWeight: FontWeight.w700),
       ),
     );
   }

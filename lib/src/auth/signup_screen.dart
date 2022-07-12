@@ -1,33 +1,37 @@
-import 'package:app_loja_virtual/src/auth/signup_screen.dart';
-import 'package:app_loja_virtual/src/base/base_screen.dart';
+import 'package:app_loja_virtual/src/constants.dart';
 import 'package:app_loja_virtual/src/widgets/auth_container.dart';
 import 'package:app_loja_virtual/src/widgets/custom_button.dart';
-import 'package:app_loja_virtual/src/widgets/custom_textform.dart';
-import 'package:app_loja_virtual/src/widgets/link_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-class SignInScreen extends StatelessWidget {
-  const SignInScreen({Key? key}) : super(key: key);
+import '../widgets/custom_textform.dart';
+
+class SignUpScreen extends StatelessWidget {
+  final cpfFormatter = MaskTextInputFormatter(
+    mask: '###.###.###-##',
+    filter: {
+      '#': RegExp(r'[0-9]'),
+    },
+  );
+
+  final phonefFormatter = MaskTextInputFormatter(
+    mask: '(##)#####-####',
+    filter: {
+      '#': RegExp(r'[0-9]'),
+    },
+  );
+  SignUpScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Image.asset(
-                  'assets/images/skull.png',
-                  height: size.height * .22,
-                ),
-                const Text(
-                  'Título da loja',
-                  style: TextStyle(fontSize: 30),
-                ),
                 AuthContainer(
                   children: [
                     CustomTextform(
@@ -41,43 +45,45 @@ class SignInScreen extends StatelessWidget {
                       icon: Icons.lock,
                       isSecret: true,
                     ),
-                    CustomButton(
-                      buttonText: 'Entrar',
-                      onpress: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => BaseScreen(),
-                          ),
-                        );
-                      },
+                    CustomTextform(
+                        inputLabel: 'Nome',
+                        inputType: TextInputType.emailAddress,
+                        icon: Icons.person),
+                    CustomTextform(
+                      inputLabel: 'Celular',
+                      inputType: TextInputType.emailAddress,
+                      icon: Icons.phone,
+                      inputFormaters: [phonefFormatter],
                     ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: LinkText(
-                        text: 'Esqueceu a senha?',
+                    CustomTextform(
+                      inputLabel: 'CPF',
+                      inputType: TextInputType.emailAddress,
+                      icon: Icons.file_copy,
+                      inputFormaters: [cpfFormatter],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5, bottom: 10),
+                      child: CustomButton(
+                        buttonText: 'Cadastrar',
                         onpress: () {},
                       ),
                     ),
                     const Padding(
                       padding: EdgeInsets.only(top: 15, bottom: 15),
                       child: Text(
-                        'Ainda não tem uma conta?',
+                        'Já tem uma conta?',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontWeight: FontWeight.w700, fontSize: 15),
                       ),
                     ),
                     CustomButton(
-                      buttonText: 'Cadastre-se',
+                      buttonText: 'Entrar',
                       onpress: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => SignUpScreen(),
-                          ),
-                        );
+                        Navigator.of(context).pop();
                       },
                       buttonColor: Colors.white,
-                      textColor: Color.fromARGB(255, 32, 25, 25),
+                      textColor: kWhiteButtonTextColor,
                     )
                   ],
                 ),
