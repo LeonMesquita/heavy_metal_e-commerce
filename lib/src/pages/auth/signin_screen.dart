@@ -1,5 +1,3 @@
-import 'package:app_loja_virtual/src/auth/signup_screen.dart';
-import 'package:app_loja_virtual/src/base/base_screen.dart';
 import 'package:app_loja_virtual/src/widgets/auth_container.dart';
 import 'package:app_loja_virtual/src/widgets/custom_button.dart';
 import 'package:app_loja_virtual/src/widgets/custom_textform.dart';
@@ -7,6 +5,9 @@ import 'package:app_loja_virtual/src/widgets/link_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+
+import '../base/base_screen.dart';
+import 'signup_screen.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);

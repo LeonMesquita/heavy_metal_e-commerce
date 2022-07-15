@@ -6,7 +6,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-import '../widgets/custom_textform.dart';
+import '../../widgets/custom_textform.dart';
 
 class SignUpScreen extends StatelessWidget {
   final cpfFormatter = MaskTextInputFormatter(
