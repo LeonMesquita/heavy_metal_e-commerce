@@ -63,9 +63,7 @@ class _HomeTabState extends State<HomeTab> {
                 ),
                 itemBuilder: (_, index) {
                   return ProductCard(
-                    productImage: appData.items[index].imgUrl,
-                    productPrice: appData.items[index].price,
-                    productName: appData.items[index].itemName,
+                    item: appData.items[index],
                     onAdd: () {},
                     onSelect: () {
                       Navigator.of(context).push(

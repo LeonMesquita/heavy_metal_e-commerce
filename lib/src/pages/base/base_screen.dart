@@ -1,4 +1,5 @@
 import 'package:app_loja_virtual/src/constants.dart';
+import 'package:app_loja_virtual/src/pages/cart/cart_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -77,7 +78,7 @@ class _BaseScreenState extends State<BaseScreen> {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           HomeTab(),
-          Container(),
+          CartTab(),
           Container(),
           Container(),
         ],
