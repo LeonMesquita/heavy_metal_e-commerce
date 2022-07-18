@@ -1,19 +1,16 @@
 import 'package:app_loja_virtual/src/constants.dart';
+import 'package:app_loja_virtual/src/models/item_model.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
-  final String productImage;
-  final String productName;
-  final double productPrice;
   final VoidCallback onAdd;
   final VoidCallback onSelect;
+  final ItemModel item;
   const ProductCard(
       {Key? key,
-      required this.productImage,
-      required this.productPrice,
-      required this.productName,
       required this.onAdd,
-      required this.onSelect})
+      required this.onSelect,
+      required this.item})
       : super(key: key);
 
   @override
@@ -36,17 +33,20 @@ class ProductCard extends StatelessWidget {
                     borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(10),
                         topRight: Radius.circular(10)),
-                    child: Image.asset(
-                      productImage,
-                      fit: BoxFit.cover,
+                    child: Hero(
+                      tag: item.imgUrl,
+                      child: Image.asset(
+                        item.imgUrl,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
                 productText(
-                  productName,
+                  item.itemName,
                 ),
                 productText(
-                  'R\$${productPrice.toStringAsFixed(2)}',
+                  'R\$${item.price.toStringAsFixed(2)}',
                 ),
               ],
             ),
